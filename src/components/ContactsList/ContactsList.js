@@ -1,4 +1,4 @@
-import react from 'react';
+
 import ContactItem from '../ContactItem/ContactItem';
 
 const ContactList = ({ contacts, onRemoveContact }) => {
