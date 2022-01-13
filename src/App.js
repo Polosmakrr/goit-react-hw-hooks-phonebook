@@ -7,7 +7,7 @@ import './App.css';
 
 const useLocalStorage = (key, defaultValue)=>{
   const [state, setState] = useState(() => {
-    return (JSON.parse(window.localStorage.getItem(key)))
+    return (JSON.parse(window.localStorage.getItem(key))) ?? defaultValue;
   });
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const useLocalStorage = (key, defaultValue)=>{
 };
 
 export default function App() {
-  const [contacts, setContacts] = useLocalStorage('contacts','');
+  const [contacts, setContacts] = useLocalStorage('contacts',[]);
   const [filter, setFilter] = useState('');
   
   const formSubmitHandler = data => {
@@ -42,8 +42,8 @@ export default function App() {
     };
   
      const getFilteredContacts = () =>{
-
-    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+       
+         return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   };
 
    return (
